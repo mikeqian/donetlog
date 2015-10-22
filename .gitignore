@@ -13,3 +13,7 @@
 /Framework.Qlh.Infrastructure/SDKTests/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
 /Framework.Qlh.Infrastructure/SDKTests/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
 /Framework.Qlh.Infrastructure/SDK/obj/Debug
+/Framework.Qlh.Log/packages
+/Framework.Qlh.Log/SDKTests/bin/Debug
+/Framework.Qlh.Log/SDKTests/obj/Debug
+/Framework.Qlh.Log/SDK/obj/Debug
