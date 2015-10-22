@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
     internal class MultiFileWatcher : IDisposable
     {

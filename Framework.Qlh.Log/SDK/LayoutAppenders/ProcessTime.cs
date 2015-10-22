@@ -33,8 +33,9 @@
 
 using System;
 using System.Text;
+using NLog;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("processtime")]
     public class ProcessTimeLayoutAppender : LayoutAppender

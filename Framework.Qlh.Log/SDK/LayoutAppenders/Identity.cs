@@ -36,7 +36,7 @@ using System;
 using System.Text;
 using System.Security.Principal;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("identity")]
     public class IdentityLayoutAppender : LayoutAppender

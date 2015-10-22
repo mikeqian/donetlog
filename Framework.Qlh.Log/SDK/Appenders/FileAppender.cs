@@ -37,7 +37,7 @@ using System.IO;
 using Framework.Qlh.Log;
 using NLog;
 
-namespace NLog.Appenders
+namespace Framework.Qlh.Log.Appenders
 {
     public class FileAppender : Appender
     {

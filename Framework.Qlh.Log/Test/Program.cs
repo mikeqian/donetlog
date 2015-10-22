@@ -1,12 +1,11 @@
 ﻿using System.IO;
 using Framework.Qlh.Log;
-using NLog;
 
-namespace SDKTests
+namespace Test
 {
-    public class FactoryTests
+    class Program
     {
-        public static void Main()
+        static void Main(string[] args)
         {
             var l = LogManager.GetLogger("Aaa");
             var l2 = LogManager.GetLogger("Bbb");

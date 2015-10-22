@@ -31,13 +31,9 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-using System;
 using System.Collections;
-using System.Xml;
-using Framework.Qlh.Log;
-using NLog;
 
-namespace NLog.Config
+namespace Framework.Qlh.Log.Config
 {
     public class LoggingConfiguration
     {

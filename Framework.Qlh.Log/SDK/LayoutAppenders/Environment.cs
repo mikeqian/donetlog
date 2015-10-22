@@ -37,7 +37,7 @@ using System;
 using System.Text;
 using System.IO;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("environment")]
     public class EnvironmentLayoutAppender : LayoutAppender

@@ -35,7 +35,7 @@
 using System;
 using System.Text;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("threadname")]
     public class ThreadNameLayoutAppender : LayoutAppender

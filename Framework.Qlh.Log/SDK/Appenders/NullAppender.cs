@@ -37,7 +37,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using Framework.Qlh.Log;
 
-namespace NLog.Appenders
+namespace Framework.Qlh.Log.Appenders
 {
     public class NullAppender : Appender
     {

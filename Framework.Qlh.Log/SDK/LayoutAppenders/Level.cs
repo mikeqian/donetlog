@@ -34,7 +34,7 @@
 using System;
 using System.Text;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("level")]
     public class LevelLayoutAppender : LayoutAppender

@@ -66,7 +66,6 @@
     <Compile Include="Entity\Log\SysLog.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="IBaseLogger.cs" />
-    <Compile Include="ILogger.cs" />
     <Compile Include="Layout.cs" />
     <Compile Include="LayoutAppender.cs" />
     <Compile Include="LayoutAppenderAttribute.cs" />
@@ -95,7 +94,6 @@
     <Compile Include="Loggers\OldLogger.cs" />
     <Compile Include="Loggers\AppLogger.cs" />
     <Compile Include="Loggers\SysLogger.cs" />
-    <Compile Include="Enum\LogLevel.cs" />
     <Compile Include="LogLevel.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="MultiFileWatcher.cs" />

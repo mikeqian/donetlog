@@ -36,7 +36,7 @@ using System.Collections;
 using System.Diagnostics;
 using Framework.Qlh.Log;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
 	sealed class LoggerImpl : Logger
     {

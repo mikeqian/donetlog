@@ -35,7 +35,7 @@ using System;
 using System.Globalization;
 using System.Text;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("shortdate")]
     public class ShortDateLayoutAppender : LayoutAppender

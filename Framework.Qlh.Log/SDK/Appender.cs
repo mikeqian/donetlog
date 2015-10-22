@@ -32,7 +32,6 @@
 // 
 
 using System;
-using NLog;
 
 namespace Framework.Qlh.Log
 {

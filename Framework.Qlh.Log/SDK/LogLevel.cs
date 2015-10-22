@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
     public enum LogLevel
     {

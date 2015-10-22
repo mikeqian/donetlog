@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
 using System.Text;
-using NLog;
-using NLog.LayoutAppenders;
+using Framework.Qlh.Log.LayoutAppenders;
 
 namespace Framework.Qlh.Log
 {

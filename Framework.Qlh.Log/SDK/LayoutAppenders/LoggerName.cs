@@ -35,7 +35,7 @@ using System;
 using System.Text;
 using System.Globalization;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("logger")]
     public class LoggerNameLayoutAppender : LayoutAppender

@@ -6,3 +6,11 @@
 
     }
 }
+
+namespace NLog
+{
+    public class Temp
+    {
+        
+    }
+}

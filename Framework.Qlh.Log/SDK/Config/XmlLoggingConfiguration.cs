@@ -33,19 +33,21 @@
 
 using System;
 using System.Collections;
+using System.Configuration;
 using System.Reflection;
 using System.Xml;
 using System.IO;
 using System.Globalization;
 using Framework.Qlh.Log;
+using Framework.Qlh.Log.Config;
 using NLog;
 
-namespace NLog.Config
+namespace Framework.Qlh.Log.Config
 {
     public class XmlLoggingConfiguration : LoggingConfiguration
     {
         private Hashtable _visitedFile = new Hashtable();
-        
+
         private bool _autoReload = false;
         private string _originalFileName = null;
 
@@ -54,16 +56,18 @@ namespace NLog.Config
             get { return _autoReload; }
             set { _autoReload = value; }
         }
-            
+
         public XmlLoggingConfiguration() { }
-        public XmlLoggingConfiguration(string fileName) {
+        public XmlLoggingConfiguration(string fileName)
+        {
             _originalFileName = fileName;
             ConfigureFromFile(fileName);
         }
 
         public override ICollection FileNamesToWatch
         {
-            get {
+            get
+            {
                 if (_autoReload)
                     return _visitedFile.Keys;
                 else
@@ -75,8 +79,9 @@ namespace NLog.Config
         {
             return new XmlLoggingConfiguration(_originalFileName);
         }
-        
-        private void ConfigureFromFile(string fileName) {
+
+        private void ConfigureFromFile(string fileName)
+        {
             string key = Path.GetFullPath(fileName).ToLower();
             if (_visitedFile.Contains(key))
                 return;
@@ -85,17 +90,23 @@ namespace NLog.Config
 
             XmlDocument doc = new XmlDocument();
             doc.Load(fileName);
-            if (doc.DocumentElement.LocalName == "configuration") {
-                foreach (XmlElement el in doc.DocumentElement.GetElementsByTagName("nlog")) {
+            if (doc.DocumentElement.LocalName == "configuration")
+            {
+                foreach (XmlElement el in doc.DocumentElement.GetElementsByTagName("nlog"))
+                {
                     ConfigureFromXmlElement(el, Path.GetDirectoryName(fileName));
                 }
-            } else {
+            }
+            else
+            {
                 ConfigureFromXmlElement(doc.DocumentElement, Path.GetDirectoryName(fileName));
             }
         }
 
-        private void ConfigureFromXmlElement(XmlElement configElement, string baseDirectory) {
-            if (configElement.HasAttribute("autoReload")) {
+        private void ConfigureFromXmlElement(XmlElement configElement, string baseDirectory)
+        {
+            if (configElement.HasAttribute("autoReload"))
+            {
                 AutoReload = true;
             }
 
@@ -105,23 +116,26 @@ namespace NLog.Config
 
                 string newFileName = layout.GetFormattedMessage(LogEventInfo.Empty);
                 newFileName = Path.Combine(baseDirectory, newFileName);
-                if (File.Exists(newFileName)) {
+                if (File.Exists(newFileName))
+                {
                     ConfigureFromFile(newFileName);
-                } else {
+                }
+                else
+                {
                     throw new FileNotFoundException("Included fine not found.", newFileName);
                 }
             }
-            
+
             foreach (XmlElement el in configElement.GetElementsByTagName("layout-appenders"))
             {
                 AddLayoutAppendersFromElement(el);
             }
-            
+
             foreach (XmlElement el in configElement.GetElementsByTagName("appenders"))
             {
                 ConfigureAppendersFromElement(el);
             }
-            
+
             foreach (XmlElement el in configElement.GetElementsByTagName("rules"))
             {
                 ConfigureRulesFromElement(el);
@@ -130,25 +144,25 @@ namespace NLog.Config
             ResolveAppenders();
         }
 
-#if !NETCF
         public static LoggingConfiguration AppConfig
         {
             get
             {
-                object o = System.Configuration.ConfigurationSettings.GetConfig("nlog");
+                object o = ConfigurationManager.GetSection("nlog");
                 return o as LoggingConfiguration;
             }
         }
-#endif
 
         // implementation details
 
-        private static string CleanWhitespace(string s) {
+        private static string CleanWhitespace(string s)
+        {
             s = s.Replace(" ", ""); // get rid of the whitespace
             return s;
         }
-        
-        private static LogLevel LogLevelFromString(string s) {
+
+        private static LogLevel LogLevelFromString(string s)
+        {
             switch (s)
             {
                 case "Debug":
@@ -166,7 +180,8 @@ namespace NLog.Config
             }
         }
 
-        private void ConfigureRulesFromElement(XmlElement element) {
+        private void ConfigureRulesFromElement(XmlElement element)
+        {
             if (element == null)
                 return;
             foreach (XmlElement ruleElement in element.GetElementsByTagName("logger"))
@@ -182,54 +197,67 @@ namespace NLog.Config
                 }
                 rule.Final = false;
 
-                if (ruleElement.HasAttribute("final")) {
+                if (ruleElement.HasAttribute("final"))
+                {
                     rule.Final = true;
                 }
 
-                if (ruleElement.HasAttribute("level")) {
+                if (ruleElement.HasAttribute("level"))
+                {
                     LogLevel level = LogLevelFromString(ruleElement.GetAttribute("level"));
                     rule.EnableLoggingForLevel(level);
-                } else if (ruleElement.HasAttribute("levels")) {
+                }
+                else if (ruleElement.HasAttribute("levels"))
+                {
                     string levelsString = ruleElement.GetAttribute("levels");
                     levelsString = CleanWhitespace(levelsString);
 
                     string[] tokens = levelsString.Split(',');
-                    foreach (string s in tokens) {
+                    foreach (string s in tokens)
+                    {
                         LogLevel level = LogLevelFromString(s);
-						rule.EnableLoggingForLevel(level);
+                        rule.EnableLoggingForLevel(level);
                     }
-                } else {
+                }
+                else
+                {
                     int minLevel = 0;
                     int maxLevel = (int)LogLevel.MaxLevel;
 
-                    if (ruleElement.HasAttribute("minlevel")) {
+                    if (ruleElement.HasAttribute("minlevel"))
+                    {
                         minLevel = (int)LogLevelFromString(ruleElement.GetAttribute("minlevel"));
                     }
 
-                    if (ruleElement.HasAttribute("maxlevel")) {
+                    if (ruleElement.HasAttribute("maxlevel"))
+                    {
                         maxLevel = (int)LogLevelFromString(ruleElement.GetAttribute("maxlevel"));
                     }
 
-                    for (int i = minLevel; i <= maxLevel; ++i) {
-						rule.EnableLoggingForLevel((LogLevel)i);
-					}
+                    for (int i = minLevel; i <= maxLevel; ++i)
+                    {
+                        rule.EnableLoggingForLevel((LogLevel)i);
+                    }
                 }
 
                 AppenderRules.Add(rule);
             }
         }
 
-        private static void AddLayoutAppendersFromElement(XmlElement element) {
+        private static void AddLayoutAppendersFromElement(XmlElement element)
+        {
             if (element == null)
                 return;
 
-            foreach (XmlElement appenderElement in element.GetElementsByTagName("add")) {
+            foreach (XmlElement appenderElement in element.GetElementsByTagName("add"))
+            {
                 string name = appenderElement.GetAttribute("name");
                 string type = appenderElement.GetAttribute("type");
                 string assemblyFile = appenderElement.GetAttribute("assemblyFile");
 
-                if (assemblyFile != null && assemblyFile.Length > 0) {
-					Assembly asm = Assembly.LoadFrom(assemblyFile);
+                if (assemblyFile != null && assemblyFile.Length > 0)
+                {
+                    Assembly asm = Assembly.LoadFrom(assemblyFile);
                     LayoutAppenderFactory.AddLayoutAppendersFromAssembly(asm);
                     continue;
                 };
@@ -237,24 +265,26 @@ namespace NLog.Config
 #if !NETCF
                 string assemblyPartialName = appenderElement.GetAttribute("assemblyPartialName");
 
-                if (assemblyPartialName != null && assemblyPartialName.Length > 0) {
-					Assembly asm = Assembly.LoadWithPartialName(assemblyPartialName);
-					if (asm != null) 
-					{
-						LayoutAppenderFactory.AddLayoutAppendersFromAssembly(asm);
-					}
-					else
-					{
-						throw new ApplicationException("Assembly with partial name " + assemblyPartialName + " not found.");
-					}
+                if (assemblyPartialName != null && assemblyPartialName.Length > 0)
+                {
+                    Assembly asm = Assembly.LoadWithPartialName(assemblyPartialName);
+                    if (asm != null)
+                    {
+                        LayoutAppenderFactory.AddLayoutAppendersFromAssembly(asm);
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Assembly with partial name " + assemblyPartialName + " not found.");
+                    }
                     continue;
                 };
 #endif
 
                 string assemblyName = appenderElement.GetAttribute("assembly");
 
-                if (assemblyName != null && assemblyName.Length > 0) {
-					Assembly asm = Assembly.Load(assemblyName);
+                if (assemblyName != null && assemblyName.Length > 0)
+                {
+                    Assembly asm = Assembly.Load(assemblyName);
                     LayoutAppenderFactory.AddLayoutAppendersFromAssembly(asm);
                     continue;
                 };
@@ -262,12 +292,14 @@ namespace NLog.Config
                 LayoutAppenderFactory.AddLayoutAppender(name, Type.GetType(type));
             }
         }
-           
-        private void ConfigureAppendersFromElement(XmlElement element) {
+
+        private void ConfigureAppendersFromElement(XmlElement element)
+        {
             if (element == null)
                 return;
 
-            foreach (XmlElement appenderElement in element.GetElementsByTagName("appender")) {
+            foreach (XmlElement appenderElement in element.GetElementsByTagName("appender"))
+            {
                 string type = appenderElement.GetAttribute("type");
                 Appender newAppender = Appender.Create(type);
 
@@ -276,10 +308,12 @@ namespace NLog.Config
             }
         }
 
-        private void ConfigureAppenderFromXmlElement(Appender appender, XmlElement element) {
+        private void ConfigureAppenderFromXmlElement(Appender appender, XmlElement element)
+        {
             Type appenderType = appender.GetType();
 
-            foreach (XmlAttribute attrib in element.Attributes) {
+            foreach (XmlAttribute attrib in element.Attributes)
+            {
                 string name = attrib.LocalName;
                 string value = attrib.InnerText;
 
@@ -301,5 +335,5 @@ namespace NLog.Config
                 }
             }
         }
-     }
+    }
 }

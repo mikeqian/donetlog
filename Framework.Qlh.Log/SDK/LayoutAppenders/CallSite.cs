@@ -37,7 +37,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("callsite")]
     public class CallSiteLayoutAppender : LayoutAppender

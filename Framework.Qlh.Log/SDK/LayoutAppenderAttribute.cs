@@ -33,7 +33,7 @@
 
 using System;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class LayoutAppenderAttribute : Attribute

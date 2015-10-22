@@ -32,9 +32,8 @@
 // 
 
 using System;
-using Framework.Qlh.Log;
 
-namespace NLog.Appenders
+namespace Framework.Qlh.Log.Appenders
 {
     public class ConsoleAppender : Appender
     {

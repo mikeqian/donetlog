@@ -33,7 +33,7 @@
 
 using System;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
     public sealed class NullLogger : Logger
     {

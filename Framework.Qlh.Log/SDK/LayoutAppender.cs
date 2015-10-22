@@ -32,12 +32,9 @@
 // 
 
 using System;
-using System.Collections;
 using System.Text;
 
-using NLog.LayoutAppenders;
-
-namespace NLog
+namespace Framework.Qlh.Log
 {
     public abstract class LayoutAppender
     {

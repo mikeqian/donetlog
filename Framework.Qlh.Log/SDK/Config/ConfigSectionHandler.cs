@@ -31,13 +31,11 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if !NETCF
-
 using System;
 using System.Xml;
 using System.Configuration;
 
-namespace NLog.Config
+namespace Framework.Qlh.Log.Config
 {
     public class ConfigSectionHandler : IConfigurationSectionHandler
     {
@@ -49,5 +47,3 @@ namespace NLog.Config
         }
     }
 }
-
-#endif

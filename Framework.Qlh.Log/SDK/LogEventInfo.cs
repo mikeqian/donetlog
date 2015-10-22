@@ -34,7 +34,7 @@
 using System;
 using System.Diagnostics;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
 	public struct LogEventInfo
     {

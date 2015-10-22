@@ -33,11 +33,8 @@
 
 using System;
 using System.Collections;
-using System.Collections.Specialized;
-using Framework.Qlh.Log;
-using NLog;
 
-namespace NLog.Config
+namespace Framework.Qlh.Log.Config
 {
     public class AppenderRule
     {

@@ -36,7 +36,7 @@ using Framework.Qlh.Log;
 using System;
 using System.Diagnostics;
 
-namespace NLog.Appenders
+namespace Framework.Qlh.Log.Appenders
 {
     public class TraceAppender : Appender
     {

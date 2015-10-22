@@ -35,11 +35,9 @@ using System;
 using System.Text;
 using System.Collections;
 using System.Reflection;
-using System.Globalization;
+using Framework.Qlh.Log.LayoutAppenders;
 
-using NLog.LayoutAppenders;
-
-namespace NLog
+namespace Framework.Qlh.Log
 {
     public sealed class LayoutAppenderFactory
     {

@@ -33,13 +33,11 @@
 
 using System;
 using System.Collections;
-using System.Xml;
 using System.IO;
 using System.Reflection;
-using Framework.Qlh.Log;
-using NLog.Config;
+using Framework.Qlh.Log.Config;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
     public sealed class LogManager 
     {

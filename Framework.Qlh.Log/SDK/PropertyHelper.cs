@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Globalization;
 
-namespace NLog
+namespace Framework.Qlh.Log
 {
     internal class PropertyHelper
     {

@@ -34,7 +34,7 @@
 using System;
 using System.Text;
 
-namespace NLog.LayoutAppenders
+namespace Framework.Qlh.Log.LayoutAppenders
 {
     [LayoutAppender("message")]
     public class MessageLayoutAppender : LayoutAppender
