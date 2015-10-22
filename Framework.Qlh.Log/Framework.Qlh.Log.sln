@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-SDK", "1-SDK", "{1911A4DF-C6E7-4822-889D-036305676101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDK", "SDK\SDK.csproj", "{E0AD60F3-81CC-4CFA-B1F9-F0B7ABEA0A60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{51E0AB8B-C929-4D24-9958-4F3ADA8C46AF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Test", "2-Test", "{AE2F4243-64D2-4122-9630-70676374EABA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKTests", "SDKTests\SDKTests.csproj", "{161D1238-543C-4E6D-A24B-64020FDC2D85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0AD60F3-81CC-4CFA-B1F9-F0B7ABEA0A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0AD60F3-81CC-4CFA-B1F9-F0B7ABEA0A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0AD60F3-81CC-4CFA-B1F9-F0B7ABEA0A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0AD60F3-81CC-4CFA-B1F9-F0B7ABEA0A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161D1238-543C-4E6D-A24B-64020FDC2D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161D1238-543C-4E6D-A24B-64020FDC2D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161D1238-543C-4E6D-A24B-64020FDC2D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161D1238-543C-4E6D-A24B-64020FDC2D85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0AD60F3-81CC-4CFA-B1F9-F0B7ABEA0A60} = {1911A4DF-C6E7-4822-889D-036305676101}
+		{161D1238-543C-4E6D-A24B-64020FDC2D85} = {AE2F4243-64D2-4122-9630-70676374EABA}
+	EndGlobalSection
+EndGlobal
