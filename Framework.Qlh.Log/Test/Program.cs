@@ -21,7 +21,7 @@ namespace Test
             l2.Error("to jest error");
             l2.Fatal("to jest fatal");
 
-            File.Copy("Config1.nlog", "NLog.Test.exe.config", true);
+            File.Copy("Config1.mlog", "Test.exe.config", true);
             System.Threading.Thread.Sleep(100);
 
             l.Debug("to jest debug");
@@ -34,7 +34,7 @@ namespace Test
             l.Fatal("to jest fatal");
             l2.Error("to jest error");
             l2.Fatal("to jest fatal");
-            File.Copy("Config2.nlog", "NLog.Test.exe.config", true);
+            File.Copy("Config2.mlog", "Test.exe.config", true);
             System.Threading.Thread.Sleep(100);
             l.Debug("to jest debug");
             l.Info("to jest info");

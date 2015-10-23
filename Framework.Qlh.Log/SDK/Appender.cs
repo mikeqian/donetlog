@@ -37,7 +37,7 @@ namespace Framework.Qlh.Log
 {
     public abstract class Appender
     {
-        const string InternalAppenderNamePrefix = "NLog.Appenders.";
+        const string InternalAppenderNamePrefix = "Framework.Qlh.Log.Appenders.";
         const string InternalAppenderNameSuffix = "Appender";
 
         protected Appender()

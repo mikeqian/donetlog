@@ -20,13 +20,8 @@ namespace Framework.Qlh.Log.Loggers
                     File.AppendAllText(path, message);
                 }
             }
-            catch (Exception exception)
+            catch
             {
-                if (exception.MustBeRethrown())
-                {
-                    throw;
-                }
-
                 // we have no place to log the message to so we ignore it
             }
         }

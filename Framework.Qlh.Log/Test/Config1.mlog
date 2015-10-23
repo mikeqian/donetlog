@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="windows-1250" ?>
 <configuration>
     <configSections>
-        <section name="nlog" type="NLog.Config.ConfigSectionHandler, NLog" />
+      <section name="mLog" type="Framework.Qlh.Log.Config.ConfigSectionHandler, Framework.Qlh.Log" />
     </configSections>
-    <nlog autoReload="true">
+  <mLog autoReload="true">
         <appenders>
-            <appender name="console" type="Console" layout="CONFIG1: ${machinename}" />
+            <appender name="console" type="Console" layout="CONFIG1: ${machinename}:${message}" />
         </appenders>
-
         <rules>
             <logger name="*" level="Debug" appendTo="console" />
         </rules>
-    </nlog>
+    </mLog>
 </configuration>

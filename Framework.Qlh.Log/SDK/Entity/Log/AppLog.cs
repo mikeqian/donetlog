@@ -3,14 +3,5 @@
     internal class AppLog : BaseLog
     {
         public string LogType { get; set; }
-
-    }
-}
-
-namespace NLog
-{
-    public class Temp
-    {
-        
     }
 }
