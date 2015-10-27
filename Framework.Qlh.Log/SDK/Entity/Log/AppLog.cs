@@ -1,6 +1,6 @@
 ﻿namespace Framework.Qlh.Log.Entity.Log
 {
-    internal class AppLog : BaseLog
+    internal class AppLog
     {
         public string LogType { get; set; }
     }

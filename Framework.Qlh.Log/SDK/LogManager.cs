@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Framework.Qlh.Log.Config;
@@ -54,12 +55,13 @@ namespace Framework.Qlh.Log
                     }
                     if (_config == null)
                     {
-                        string configFile = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
-                        configFile = configFile.Replace(".config", ".mlog");
-                        if (File.Exists(configFile))
+                        foreach (string configFile in GetCandidateConfigFileNames())
                         {
-                            // Console.WriteLine("Attempting to load config from {0}", configFile);
-                            _config = new XmlLoggingConfiguration(configFile);
+                            if (File.Exists(configFile))
+                            {
+                                _config = new XmlLoggingConfiguration(configFile);
+                                break;
+                            }
                         }
                     }
                     if (_config == null)
@@ -176,6 +178,28 @@ namespace Framework.Qlh.Log
                 }
             }
             return appendersByLevel;
+        }
+
+        private static IEnumerable<string> GetCandidateConfigFileNames()
+        {
+            var currentAppDomain = AppDomain.CurrentDomain;
+
+            // mLog.config from application directory
+            yield return Path.Combine(currentAppDomain.BaseDirectory, "mLog.config");
+
+            // Current config file with .config renamed to .nlog
+            string cf = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
+            if (cf != null)
+            {
+                yield return Path.ChangeExtension(cf, ".mlog");
+
+                // .nlog file based on the non-vshost version of the current config file
+                const string vshostSubStr = ".vshost.";
+                if (cf.Contains(vshostSubStr))
+                {
+                    yield return Path.ChangeExtension(cf.Replace(vshostSubStr, "."), ".mlog");
+                }
+            }
         }
     }
 }

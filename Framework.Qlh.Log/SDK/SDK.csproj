@@ -57,7 +57,6 @@
     <Compile Include="Config\LoggingConfiguration.cs" />
     <Compile Include="Config\XmlLoggingConfiguration.cs" />
     <Compile Include="Entity\Log\AppLog.cs" />
-    <Compile Include="Entity\Log\BaseLog.cs" />
     <Compile Include="Entity\Log\SysLog.cs" />
     <Compile Include="IBaseLogger.cs" />
     <Compile Include="Layout.cs" />
